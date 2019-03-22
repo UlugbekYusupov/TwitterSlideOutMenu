@@ -12,6 +12,7 @@
 		3737103B2241EAF90059C2CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 373710392241EAF90059C2CA /* Main.storyboard */; };
 		3737103D2241EAFB0059C2CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3737103C2241EAFB0059C2CA /* Assets.xcassets */; };
 		373710402241EAFB0059C2CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3737103E2241EAFB0059C2CA /* LaunchScreen.storyboard */; };
+		373710482241F27F0059C2CA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373710472241F27F0059C2CA /* MenuViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		3737103C2241EAFB0059C2CA /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3737103F2241EAFB0059C2CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		373710412241EAFB0059C2CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		373710472241F27F0059C2CA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 		373710342241EAF90059C2CA /* TwitterSlideOutMenu */ = {
 			isa = PBXGroup;
 			children = (
+				373BEF632245523700C310F7 /* Controllers */,
 				373710352241EAF90059C2CA /* AppDelegate.swift */,
 				373710372241EAF90059C2CA /* ViewController.swift */,
 				373710392241EAF90059C2CA /* Main.storyboard */,
@@ -62,6 +65,14 @@
 				373710412241EAFB0059C2CA /* Info.plist */,
 			);
 			path = TwitterSlideOutMenu;
+			sourceTree = "<group>";
+		};
+		373BEF632245523700C310F7 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				373710472241F27F0059C2CA /* MenuViewController.swift */,
+			);
+			path = Controllers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,6 +147,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				373710382241EAF90059C2CA /* ViewController.swift in Sources */,
+				373710482241F27F0059C2CA /* MenuViewController.swift in Sources */,
 				373710362241EAF90059C2CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
