@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+// HomeController.swift
 //  TwitterSlideOutMenu
 //
 //  Created by Ulugbek Yusupov on 3/20/19.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+class HomeController: UITableViewController {
 
     let celliD = "celliD"
     
@@ -20,27 +20,39 @@ class ViewController: UITableViewController {
         setupNavigationItems()
     }
     
+    
+    let menuController = MenuViewController()
+    
+    fileprivate let menuWidth: CGFloat = 300
+    
     @objc func handleOpen() {
         
-        let viewController = MenuViewController()
+        menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
         
-//        viewController.view.backgroundColor = .blue
-        viewController.view.frame = CGRect(x: 0, y: 0, width: self.view.frame.width - 100, height: self.view.frame.height)
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1,  initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.menuController.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
+            
+        })
         
         let mainWindow = UIApplication.shared.keyWindow
-        mainWindow?.addSubview(viewController.view)
+        mainWindow?.addSubview(menuController.view)
         
-//        view.addSubview(viewController.view)
+        addChild(menuController)
         
-//        let blueView = UIView()
-//        blueView.backgroundColor = .blue
-//        blueView.frame = CGRect(x: 0, y: 0, width: 200, height: 200)
-//        view.addSubview(blueView)
         
     }
     
     @objc func handleHide() {
         
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1,  initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.menuController.view.transform = .identity
+            
+        })
+        
+//        menuController.view.removeFromSuperview()
+//        menuController.removeFromParent()
     }
     
     //MARK:- Setup Navigation Items
