@@ -11,36 +11,37 @@ import UIKit
 class HomeController: UITableViewController {
 
     let celliD = "celliD"
+    let menuController = MenuViewController()
+    fileprivate let menuWidth: CGFloat = 300
     
+    
+    fileprivate func setupMenuController() {
+        menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
+        
+        let mainWindow = UIApplication.shared.keyWindow
+        mainWindow?.addSubview(menuController.view)
+        addChild(menuController)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.backgroundColor = UIColor.red
         setupNavigationItems()
+        
+        setupMenuController()
     }
+ 
     
-    
-    let menuController = MenuViewController()
-    
-    fileprivate let menuWidth: CGFloat = 300
+    //MARK:- Handle Open and Hide methods
     
     @objc func handleOpen() {
-        
-        menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1,  initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             
             self.menuController.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
             
         })
-        
-        let mainWindow = UIApplication.shared.keyWindow
-        mainWindow?.addSubview(menuController.view)
-        
-        addChild(menuController)
-        
-        
     }
     
     @objc func handleHide() {
