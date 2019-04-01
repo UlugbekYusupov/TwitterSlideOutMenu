@@ -13,7 +13,69 @@ class HomeController: UITableViewController {
     let celliD = "celliD"
     let menuController = MenuViewController()
     fileprivate let menuWidth: CGFloat = 300
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.backgroundColor = UIColor.red
+        setupNavigationItems()
+        
+        setupMenuController()
+        
+        //Pan Gesture
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        
+        self.view.addGestureRecognizer(panGesture)
+    }
     
+    @objc func handlePan(gesture: UIPanGestureRecognizer) {
+        
+        let translation = gesture.translation(in: view)
+        
+        if gesture.state == .changed {
+            var x = translation.x
+            
+            x = min(menuWidth,x)
+            x = max(0,x)
+            
+            let transform = CGAffineTransform(translationX: x, y: 0)
+            
+            menuController.view.transform = transform
+            navigationController?.view.transform = transform
+            
+        } else if gesture.state == .ended {
+            handleOpen()
+        }
+    }
+ 
+    
+    //MARK:- Handle Open and Hide methods
+    
+    @objc func handleOpen() {
+        performAnimations(transform:  CGAffineTransform(translationX: self.menuWidth, y: 0))
+        
+    }
+    
+    @objc func handleHide() {
+        performAnimations(transform: .identity)
+        
+    }
+    
+    //MARK: - Fileprivate
+    
+    fileprivate func performAnimations(transform: CGAffineTransform) {
+        
+        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1,  initialSpringVelocity: 1, options: .curveEaseOut, animations: {
+            
+            self.menuController.view.transform = transform // to perform menuController to overcome homeController
+            
+            //self.view.transform = transform // to slide homeController when menuController is shown to the right
+            self.navigationController?.view.transform = transform
+            
+        })
+        
+    }
     
     fileprivate func setupMenuController() {
         menuController.view.frame = CGRect(x: -menuWidth, y: 0, width: menuWidth, height: self.view.frame.height)
@@ -23,38 +85,6 @@ class HomeController: UITableViewController {
         addChild(menuController)
     }
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        tableView.backgroundColor = UIColor.red
-        setupNavigationItems()
-        
-        setupMenuController()
-    }
- 
-    
-    //MARK:- Handle Open and Hide methods
-    
-    @objc func handleOpen() {
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1,  initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
-            self.menuController.view.transform = CGAffineTransform(translationX: self.menuWidth, y: 0)
-            
-        })
-    }
-    
-    @objc func handleHide() {
-        
-        UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1,  initialSpringVelocity: 1, options: .curveEaseOut, animations: {
-            
-            self.menuController.view.transform = .identity
-            
-        })
-        
-//        menuController.view.removeFromSuperview()
-//        menuController.removeFromParent()
-    }
     
     //MARK:- Setup Navigation Items
     fileprivate func setupNavigationItems() {
