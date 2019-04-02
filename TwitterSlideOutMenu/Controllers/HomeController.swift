@@ -15,21 +15,20 @@ class HomeController: UITableViewController {
     fileprivate let menuWidth: CGFloat = 300
     fileprivate var isMenuOpened = false
     fileprivate let velocityOpenThreshold: CGFloat = 500
+   
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        tableView.backgroundColor = UIColor.red
+//        tableView.backgroundColor = UIColor.red
         setupNavigationItems()
-        
         setupMenuController()
-        
-        //Pan Gesture
-        
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-        
-        self.view.addGestureRecognizer(panGesture)
+        setupPanGesture()
+        setupDarkCoverView()
     }
+   
+    //MARK:- Handle Open and Hide methods
+    
     
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
         
@@ -40,9 +39,7 @@ class HomeController: UITableViewController {
             handleEnded(gesture: gesture)
         }
     }
- 
     
-    //MARK:- Handle Open and Hide methods
     
     @objc func handleOpen() {
         isMenuOpened = true
@@ -55,6 +52,24 @@ class HomeController: UITableViewController {
     }
     
     //MARK: - Fileprivate
+    let darkCoverView = UIView()
+    
+    fileprivate func setupDarkCoverView() {
+        
+        darkCoverView.alpha = 0
+        darkCoverView.backgroundColor = UIColor(white: 0, alpha: 0.8)
+        darkCoverView.isUserInteractionEnabled = false
+        let mainWindow = UIApplication.shared.keyWindow
+        mainWindow?.addSubview(darkCoverView)
+        darkCoverView.frame = mainWindow?.frame ?? .zero
+    }
+    
+    fileprivate func setupPanGesture() {
+        
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        
+        self.view.addGestureRecognizer(panGesture)
+    }
     
     fileprivate func handleChanged(gesture: UIPanGestureRecognizer) {
         
@@ -73,6 +88,9 @@ class HomeController: UITableViewController {
         
         menuController.view.transform = transform
         navigationController?.view.transform = transform
+        darkCoverView.transform = transform
+        
+        darkCoverView.alpha = x / menuWidth
         
     }
     
@@ -117,11 +135,17 @@ class HomeController: UITableViewController {
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1,  initialSpringVelocity: 1, options: .curveEaseOut, animations: {
             
-            self.menuController.view.transform = transform // to perform menuController to overcome homeController
-            
-            //self.view.transform = transform // to slide homeController when menuController is shown to the right
+            self.menuController.view.transform = transform
             self.navigationController?.view.transform = transform
+            self.darkCoverView.transform = transform
             
+            self.darkCoverView.alpha = transform == .identity ? 0 : 1
+//
+//            if transform == .identity {
+//                self.darkCoverView.alpha = 0
+//            } else {
+//                self.darkCoverView.alpha = 1
+//            }
         })
         
     }
