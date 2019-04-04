@@ -13,6 +13,7 @@
 		3737103D2241EAFB0059C2CA /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3737103C2241EAFB0059C2CA /* Assets.xcassets */; };
 		373710402241EAFB0059C2CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3737103E2241EAFB0059C2CA /* LaunchScreen.storyboard */; };
 		373710482241F27F0059C2CA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373710472241F27F0059C2CA /* MenuViewController.swift */; };
+		37B3D4732255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3D4722255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		3737103F2241EAFB0059C2CA /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		373710412241EAFB0059C2CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		373710472241F27F0059C2CA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
+		37B3D4722255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingControllerViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,10 +71,19 @@
 		373BEF632245523700C310F7 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				37B3D4712255CE6B00A0F2DC /* Base */,
 				373710472241F27F0059C2CA /* MenuViewController.swift */,
 				373710372241EAF90059C2CA /* HomeController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		37B3D4712255CE6B00A0F2DC /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				37B3D4722255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift */,
+			);
+			path = Base;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,6 +157,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				37B3D4732255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift in Sources */,
 				373710382241EAF90059C2CA /* HomeController.swift in Sources */,
 				373710482241F27F0059C2CA /* MenuViewController.swift in Sources */,
 				373710362241EAF90059C2CA /* AppDelegate.swift in Sources */,

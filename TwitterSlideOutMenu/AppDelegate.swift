@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         window = UIWindow()
         window?.makeKeyAndVisible()
-        window?.rootViewController = UINavigationController(rootViewController: HomeController())
+        window?.rootViewController = BaseSlidingControllerViewController()
+//        window?.rootViewController = UINavigationController(rootViewController: HomeController())
         
         
         return true
