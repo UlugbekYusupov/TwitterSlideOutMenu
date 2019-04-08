@@ -20,7 +20,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-//        tableView.backgroundColor = UIColor.red
+        tableView.backgroundColor = UIColor.red
         setupNavigationItems()
         setupMenuController()
         setupPanGesture()
