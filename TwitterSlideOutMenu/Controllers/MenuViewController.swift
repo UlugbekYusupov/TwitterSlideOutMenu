@@ -10,22 +10,23 @@ import UIKit
 
 class MenuViewController: UITableViewController {
     
-   
-    let celliD = "celliD"
     override func viewDidLoad() {
         super.viewDidLoad()
         
         tableView.backgroundColor = .blue
-//        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
-//        self.view.addGestureRecognizer(panGesture)
     }
     
-//    @objc func handlePan(gesture: UIPanGestureRecognizer) {
-//        let translation = gesture.translation(in: view)
-//        let x = translation.x + 300
-//        view.transform = CGAffineTransform(translationX: x, y: 0)
-//    }
-//
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        
+        let customeHeaderView = CustomMenuHeaderView()
+        
+        return customeHeaderView
+        
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 200
+    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
@@ -33,7 +34,7 @@ class MenuViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCell(style: .default, reuseIdentifier: celliD)
+        let cell = UITableViewCell(style: .default, reuseIdentifier: "celliD")
         cell.textLabel?.text = "Menu Item Row: \(indexPath.row)"
         
         return cell

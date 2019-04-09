@@ -23,7 +23,7 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
         tableView.backgroundColor = UIColor.red
         setupNavigationItems()
         setupMenuController()
-        setupPanGesture()
+//        setupPanGesture()
         setupDarkCoverView()
     }
     
@@ -32,7 +32,6 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
 //    }
    
     //MARK:- Handle Open and Hide methods
-    
     
     @objc func handlePan(gesture: UIPanGestureRecognizer) {
         
