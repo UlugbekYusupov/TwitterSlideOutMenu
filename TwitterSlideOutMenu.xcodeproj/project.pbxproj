@@ -17,6 +17,7 @@
 		374251AA225C5ACF00EEE21B /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374251A9225C5ACF00EEE21B /* SpacerView.swift */; };
 		37B3D4732255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3D4722255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift */; };
 		37D07674225D8A1900A1507F /* ProfileImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D07673225D8A1900A1507F /* ProfileImageView.swift */; };
+		37D07676225DD63E00A1507F /* MenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D07675225DD63E00A1507F /* MenuCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -32,6 +33,7 @@
 		374251A9225C5ACF00EEE21B /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		37B3D4722255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingControllerViewController.swift; sourceTree = "<group>"; };
 		37D07673225D8A1900A1507F /* ProfileImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileImageView.swift; sourceTree = "<group>"; };
+		37D07675225DD63E00A1507F /* MenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +93,7 @@
 				374251A7225BA7BC00EEE21B /* CustomMenuHeaderView.swift */,
 				374251A9225C5ACF00EEE21B /* SpacerView.swift */,
 				37D07673225D8A1900A1507F /* ProfileImageView.swift */,
+				37D07675225DD63E00A1507F /* MenuCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -180,6 +183,7 @@
 				374251AA225C5ACF00EEE21B /* SpacerView.swift in Sources */,
 				373710482241F27F0059C2CA /* MenuViewController.swift in Sources */,
 				374251A8225BA7BC00EEE21B /* CustomMenuHeaderView.swift in Sources */,
+				37D07676225DD63E00A1507F /* MenuCell.swift in Sources */,
 				373710362241EAF90059C2CA /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
