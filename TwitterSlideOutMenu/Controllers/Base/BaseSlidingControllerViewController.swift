@@ -115,21 +115,24 @@ class BaseSlidingControllerViewController: UIViewController {
     }
     
     func didSelectMenuItem(indexPath: IndexPath) {
-        print("selected menu itme: ", indexPath.row)
+        
+        performRightViewCleanUp()
         
         switch indexPath.row {
+            
         case 0:
             print("Show Home Screen")
         case 1:
-            
             let listsController = ListsController()
             redView.addSubview(listsController.view)
+            addChild(listsController)
+            rightViewController = listsController
             
         case 2:
-            
-            let bookmarksController = UIViewController()
-            bookmarksController.view.backgroundColor = .purple
+            let bookmarksController = BookmarksController()
             redView.addSubview(bookmarksController.view)
+            addChild(bookmarksController)
+            rightViewController = bookmarksController
             
         default:
             print("Show Moments Screen")
@@ -138,6 +141,13 @@ class BaseSlidingControllerViewController: UIViewController {
         redView.bringSubviewToFront(darkCoverView)
         
         closeMenu()
+    }
+    
+    var rightViewController: UIViewController?
+    
+    fileprivate func performRightViewCleanUp() {
+        rightViewController?.view.removeFromSuperview()
+        rightViewController?.removeFromParent()
     }
     
     fileprivate func performAnimations() {
