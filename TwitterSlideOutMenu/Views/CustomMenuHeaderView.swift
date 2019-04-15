@@ -36,7 +36,7 @@ class CustomMenuHeaderView: UIView {
     fileprivate func setupStackViewAnchors() {
         
         let arrangedSubviews = [
-            UIView(),
+//            UIView(),
             // to get image to the right side using UIview on the right of newly creadet stackView
             UIStackView(arrangedSubviews: [profileImageView, UIView()]),
             nameLabel,

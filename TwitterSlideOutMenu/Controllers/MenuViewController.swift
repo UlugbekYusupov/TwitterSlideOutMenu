@@ -15,10 +15,20 @@ struct MenuItem {
     
 }
 
+extension MenuViewController {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        // accessing BaseSlidingController.closeMenu()
+        let slidingController = UIApplication.shared.keyWindow?.rootViewController as? BaseSlidingControllerViewController
+        slidingController?.didSelectMenuItem(indexPath: indexPath)
+        
+    }
+}
+
 class MenuViewController: UITableViewController {
     
     let menuItems = [
-        MenuItem(icon: #imageLiteral(resourceName: "profile"), title: "Profile"),
+        MenuItem(icon: #imageLiteral(resourceName: "profile"), title: "Home"),
         MenuItem(icon: #imageLiteral(resourceName: "lists"), title: "Lists"),
         MenuItem(icon: #imageLiteral(resourceName: "bookmarks"), title: "Bookmarks"),
         MenuItem(icon: #imageLiteral(resourceName: "moments"), title: "Moments")
@@ -38,9 +48,9 @@ class MenuViewController: UITableViewController {
         
     }
     
-    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 200
-    }
+//    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+//        return 200
+//    }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return menuItems.count
