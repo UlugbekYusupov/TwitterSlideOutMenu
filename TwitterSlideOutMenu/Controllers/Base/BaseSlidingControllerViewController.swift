@@ -8,6 +8,11 @@
 
 import UIKit
 
+class RightContainerView: UIView {}
+class MenuContainerView: UIView {}
+class DarkCoverView: UIView {}
+
+
 class BaseSlidingControllerViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -28,22 +33,22 @@ class BaseSlidingControllerViewController: UIViewController {
     
     // MARK:- Red Blue Dark Views set up
     
-    let redView: UIView = {
-        let v = UIView()
+    let redView: RightContainerView = {
+        let v = RightContainerView()
         v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
-    let blueView: UIView = {
-        let v = UIView()
+    let blueView: MenuContainerView = {
+        let v = MenuContainerView()
         v.backgroundColor = .blue
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
     
-    let darkCoverView: UIView = {
-        let v = UIView()
+    let darkCoverView: DarkCoverView = {
+        let v = DarkCoverView()
         v.backgroundColor = UIColor(white: 0, alpha: 0.7)
         v.alpha = 0
         v.translatesAutoresizingMaskIntoConstraints = false
@@ -186,10 +191,12 @@ class BaseSlidingControllerViewController: UIViewController {
     
     fileprivate func setupViewControllers() {
         
-        let homeController = HomeController()
+//        let homeController = HomeController()
         let menuController = MenuViewController()
         
-        let homeView = homeController.view!
+        rightViewController = HomeController()
+        
+        let homeView = rightViewController!.view!
         let menuView = menuController.view!
         
         homeView.translatesAutoresizingMaskIntoConstraints = false
@@ -224,7 +231,7 @@ class BaseSlidingControllerViewController: UIViewController {
             
             ])
         
-        addChild(homeController)
+        addChild(rightViewController!)
         addChild(menuController)
     }
 }
