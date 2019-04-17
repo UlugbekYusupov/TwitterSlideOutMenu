@@ -13,6 +13,8 @@ class ListsController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationItem.title = "Lists"
+        navigationController?.navigationBar.prefersLargeTitles = true
         let listLabel = UILabel()
         listLabel.text = "Lists"
         listLabel.font = UIFont.boldSystemFont(ofSize: 64)

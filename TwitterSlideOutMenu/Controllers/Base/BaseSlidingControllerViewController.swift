@@ -18,9 +18,8 @@ class BaseSlidingControllerViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .yellow
+        view.backgroundColor = .white
         setupViews()
-        
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
         view.addGestureRecognizer(panGesture)
     }
@@ -30,12 +29,17 @@ class BaseSlidingControllerViewController: UIViewController {
     fileprivate var isMenuOpen = false
     fileprivate let velocityThreshold: CGFloat = 500
     var redViewLeadingConstraint: NSLayoutConstraint!
+    var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
+    
+    fileprivate func performRightViewCleanUp() {
+        rightViewController.view.removeFromSuperview()
+        rightViewController.removeFromParent()
+    }
     
     // MARK:- Red Blue Dark Views set up
     
     let redView: RightContainerView = {
         let v = RightContainerView()
-        v.backgroundColor = .red
         v.translatesAutoresizingMaskIntoConstraints = false
         return v
     }()
@@ -119,42 +123,39 @@ class BaseSlidingControllerViewController: UIViewController {
         performAnimations()
     }
     
+    // MARK:- didSelecetMenuItem method
+    
     func didSelectMenuItem(indexPath: IndexPath) {
         
         performRightViewCleanUp()
+        closeMenu()
         
         switch indexPath.row {
             
         case 0:
-            print("Show Home Screen")
+            rightViewController = UINavigationController(rootViewController: HomeController())
         case 1:
-            let listsController = ListsController()
-            redView.addSubview(listsController.view)
-            addChild(listsController)
-            rightViewController = listsController
-            
+            rightViewController = UINavigationController(rootViewController: ListsController())
         case 2:
-            let bookmarksController = BookmarksController()
-            redView.addSubview(bookmarksController.view)
-            addChild(bookmarksController)
-            rightViewController = bookmarksController
-            
+           rightViewController = BookmarksController()
         default:
-            print("Show Moments Screen")
+            let tabBarController = UITabBarController()
+            let momentsController = UIViewController()
+            momentsController.navigationItem.title = "Moments"
+            momentsController.view.backgroundColor = .orange
+            let navController = UINavigationController(rootViewController: momentsController)
+            navController.tabBarItem.title = "Moments"
+            tabBarController.viewControllers = [navController]
+            rightViewController = tabBarController
         }
         
+        redView.addSubview(rightViewController.view)
+        addChild(rightViewController)
         redView.bringSubviewToFront(darkCoverView)
         
-        closeMenu()
     }
-    
-    var rightViewController: UIViewController?
-    
-    fileprivate func performRightViewCleanUp() {
-        rightViewController?.view.removeFromSuperview()
-        rightViewController?.removeFromParent()
-    }
-    
+   
+    //MARK:- Animation method
     fileprivate func performAnimations() {
         
         UIView.animate(withDuration: 0.5, delay: 0, usingSpringWithDamping: 1, initialSpringVelocity: 1, options: .curveEaseOut, animations: {
@@ -191,12 +192,9 @@ class BaseSlidingControllerViewController: UIViewController {
     
     fileprivate func setupViewControllers() {
         
-//        let homeController = HomeController()
         let menuController = MenuViewController()
         
-        rightViewController = HomeController()
-        
-        let homeView = rightViewController!.view!
+        let homeView = rightViewController.view!
         let menuView = menuController.view!
         
         homeView.translatesAutoresizingMaskIntoConstraints = false
@@ -231,7 +229,7 @@ class BaseSlidingControllerViewController: UIViewController {
             
             ])
         
-        addChild(rightViewController!)
+        addChild(rightViewController)
         addChild(menuController)
     }
 }
