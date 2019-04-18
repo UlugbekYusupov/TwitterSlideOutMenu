@@ -21,6 +21,8 @@ class BaseSlidingControllerViewController: UIViewController {
         view.backgroundColor = .white
         setupViews()
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(handlePan))
+        let tapGesture = UIPanGestureRecognizer(target: self, action: #selector(handleTapDismiss))
+        darkCoverView.addGestureRecognizer(tapGesture)
         view.addGestureRecognizer(panGesture)
     }
     
@@ -29,6 +31,7 @@ class BaseSlidingControllerViewController: UIViewController {
     fileprivate var isMenuOpen = false
     fileprivate let velocityThreshold: CGFloat = 500
     var redViewLeadingConstraint: NSLayoutConstraint!
+    var redViewTrailingConstraint: NSLayoutConstraint!
     var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
     
     fileprivate func performRightViewCleanUp() {
@@ -61,6 +64,12 @@ class BaseSlidingControllerViewController: UIViewController {
     
     // MARK:- Handle Pan Gestrues
     
+    @objc fileprivate func handleTapDismiss() {
+        
+        closeMenu()
+        
+    }
+    
     @objc func handlePan(gesture:UIPanGestureRecognizer) {
         
         let translation = gesture.translation(in: view)
@@ -71,6 +80,7 @@ class BaseSlidingControllerViewController: UIViewController {
         x = max(0,x)
         
         redViewLeadingConstraint.constant = x
+        redViewTrailingConstraint.constant = x
         darkCoverView.alpha = x / menuWidth
         
         if gesture.state == .ended {
@@ -114,11 +124,13 @@ class BaseSlidingControllerViewController: UIViewController {
     func openMenu() {
         isMenuOpen = true
         redViewLeadingConstraint.constant = menuWidth
+        redViewTrailingConstraint.constant = menuWidth
         performAnimations()
     }
     
     func closeMenu() {
         redViewLeadingConstraint.constant = 0
+        redViewTrailingConstraint.constant = 0
         isMenuOpen = false
         performAnimations()
     }
@@ -175,17 +187,20 @@ class BaseSlidingControllerViewController: UIViewController {
         
         NSLayoutConstraint.activate([
             redView.topAnchor.constraint(equalTo: view.topAnchor),
-            redView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
             redView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
             
             blueView.topAnchor.constraint(equalTo: view.topAnchor),
-            blueView.trailingAnchor.constraint(equalTo: redView.safeAreaLayoutGuide.leadingAnchor),
+            blueView.trailingAnchor.constraint(equalTo: redView .leadingAnchor),
             blueView.widthAnchor.constraint(equalToConstant: menuWidth),
             blueView.bottomAnchor.constraint(equalTo: redView.bottomAnchor)
             ])
         
-        self.redViewLeadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
-        redViewLeadingConstraint.isActive = true
+        redViewLeadingConstraint = redView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0)
+         redViewLeadingConstraint.isActive = true
+        
+        redViewTrailingConstraint = redView.trailingAnchor.constraint(equalTo: view.trailingAnchor)
+        redViewTrailingConstraint.isActive = true
+       
         
         setupViewControllers()
     }
