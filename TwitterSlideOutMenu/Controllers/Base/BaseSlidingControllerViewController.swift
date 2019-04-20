@@ -30,10 +30,13 @@ class BaseSlidingControllerViewController: UIViewController {
     fileprivate let menuWidth: CGFloat = 300
     fileprivate var isMenuOpen = false
     fileprivate let velocityThreshold: CGFloat = 500
+    
     var redViewLeadingConstraint: NSLayoutConstraint!
     var redViewTrailingConstraint: NSLayoutConstraint!
-    var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
     
+    var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
+    let menuController = ChatroomsMenuController()
+
     fileprivate func performRightViewCleanUp() {
         rightViewController.view.removeFromSuperview()
         rightViewController.removeFromParent()
@@ -65,9 +68,7 @@ class BaseSlidingControllerViewController: UIViewController {
     // MARK:- Handle Pan Gestrues
     
     @objc fileprivate func handleTapDismiss() {
-        
         closeMenu()
-        
     }
     
     @objc func handlePan(gesture:UIPanGestureRecognizer) {
@@ -207,7 +208,6 @@ class BaseSlidingControllerViewController: UIViewController {
     
     fileprivate func setupViewControllers() {
         
-        let menuController = MenuViewController()
         
         let homeView = rightViewController.view!
         let menuView = menuController.view!
