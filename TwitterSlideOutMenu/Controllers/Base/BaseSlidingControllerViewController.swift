@@ -127,6 +127,7 @@ class BaseSlidingControllerViewController: UIViewController {
         redViewLeadingConstraint.constant = menuWidth
         redViewTrailingConstraint.constant = menuWidth
         performAnimations()
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     func closeMenu() {
@@ -134,6 +135,11 @@ class BaseSlidingControllerViewController: UIViewController {
         redViewTrailingConstraint.constant = 0
         isMenuOpen = false
         performAnimations()
+        setNeedsStatusBarAppearanceUpdate() 
+    }
+    
+    override var preferredStatusBarStyle: UIStatusBarStyle {
+        return isMenuOpen ? .lightContent : .default
     }
     
     // MARK:- didSelecetMenuItem method

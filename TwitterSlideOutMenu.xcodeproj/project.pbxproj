@@ -16,6 +16,8 @@
 		373710402241EAFB0059C2CA /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3737103E2241EAFB0059C2CA /* LaunchScreen.storyboard */; };
 		373710482241F27F0059C2CA /* MenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373710472241F27F0059C2CA /* MenuViewController.swift */; };
 		373BBA9A226B201800AE57FE /* ChatroomsMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BBA99226B201800AE57FE /* ChatroomsMenuController.swift */; };
+		373BBA9C226B250900AE57FE /* ChatroomMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BBA9B226B250900AE57FE /* ChatroomMenuCell.swift */; };
+		373BBA9E226B286000AE57FE /* Extensions+UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 373BBA9D226B285F00AE57FE /* Extensions+UIView.swift */; };
 		374251A8225BA7BC00EEE21B /* CustomMenuHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374251A7225BA7BC00EEE21B /* CustomMenuHeaderView.swift */; };
 		374251AA225C5ACF00EEE21B /* SpacerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 374251A9225C5ACF00EEE21B /* SpacerView.swift */; };
 		37B3D4732255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B3D4722255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift */; };
@@ -35,6 +37,8 @@
 		373710412241EAFB0059C2CA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		373710472241F27F0059C2CA /* MenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuViewController.swift; sourceTree = "<group>"; };
 		373BBA99226B201800AE57FE /* ChatroomsMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsMenuController.swift; sourceTree = "<group>"; };
+		373BBA9B226B250900AE57FE /* ChatroomMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomMenuCell.swift; sourceTree = "<group>"; };
+		373BBA9D226B285F00AE57FE /* Extensions+UIView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = "Extensions+UIView.swift"; path = "../../../../LetsBuildThatApp/Twitter/6 Bonus Lessons/Materials/SlideOutMenuLBTA/SlideOutMenuLBTA/Views/Extensions+UIView.swift"; sourceTree = "<group>"; };
 		374251A7225BA7BC00EEE21B /* CustomMenuHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomMenuHeaderView.swift; sourceTree = "<group>"; };
 		374251A9225C5ACF00EEE21B /* SpacerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpacerView.swift; sourceTree = "<group>"; };
 		37B3D4722255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseSlidingControllerViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +107,8 @@
 				374251A9225C5ACF00EEE21B /* SpacerView.swift */,
 				37D07673225D8A1900A1507F /* ProfileImageView.swift */,
 				37D07675225DD63E00A1507F /* MenuCell.swift */,
+				373BBA9B226B250900AE57FE /* ChatroomMenuCell.swift */,
+				373BBA9D226B285F00AE57FE /* Extensions+UIView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -190,7 +196,9 @@
 				37B3D4732255CEAD00A0F2DC /* BaseSlidingControllerViewController.swift in Sources */,
 				37D07674225D8A1900A1507F /* ProfileImageView.swift in Sources */,
 				374251AA225C5ACF00EEE21B /* SpacerView.swift in Sources */,
+				373BBA9C226B250900AE57FE /* ChatroomMenuCell.swift in Sources */,
 				373710482241F27F0059C2CA /* MenuViewController.swift in Sources */,
+				373BBA9E226B286000AE57FE /* Extensions+UIView.swift in Sources */,
 				371A26B02264257200A39A61 /* HomeController.swift in Sources */,
 				373BBA9A226B201800AE57FE /* ChatroomsMenuController.swift in Sources */,
 				374251A8225BA7BC00EEE21B /* CustomMenuHeaderView.swift in Sources */,
