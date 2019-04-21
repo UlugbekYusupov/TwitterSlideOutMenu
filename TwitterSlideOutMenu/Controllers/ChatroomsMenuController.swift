@@ -50,12 +50,15 @@ class ChatroomsMenuController: UITableViewController {
         let text = section == 0 ? "UNREADS" : section == 1 ? "CHANNELS" : "DIRECT MESSAGE"
         let label = ChatroomHeaderLabel()
         label.text = text
+        label.backgroundColor = #colorLiteral(red: 0.3058823529, green: 0.2196078431, blue: 0.2862745098, alpha: 1)
         label.textColor = #colorLiteral(red: 0.4520682693, green: 0.4062769711, blue: 0.526714325, alpha: 1)
         return label
     }
+    
     override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 60
     }
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ChatroomMenuCell(style: .default, reuseIdentifier: nil)
         

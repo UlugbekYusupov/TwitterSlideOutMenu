@@ -35,7 +35,7 @@ class BaseSlidingControllerViewController: UIViewController {
     var redViewTrailingConstraint: NSLayoutConstraint!
     
     var rightViewController: UIViewController = UINavigationController(rootViewController: HomeController())
-    let menuController = ChatroomsMenuController()
+    let menuController = ChatroomMenuContainerController()
 
     fileprivate func performRightViewCleanUp() {
         rightViewController.view.removeFromSuperview()
@@ -135,7 +135,7 @@ class BaseSlidingControllerViewController: UIViewController {
         redViewTrailingConstraint.constant = 0
         isMenuOpen = false
         performAnimations()
-        setNeedsStatusBarAppearanceUpdate() 
+        setNeedsStatusBarAppearanceUpdate()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
@@ -213,7 +213,6 @@ class BaseSlidingControllerViewController: UIViewController {
     }
     
     fileprivate func setupViewControllers() {
-        
         
         let homeView = rightViewController.view!
         let menuView = menuController.view!
