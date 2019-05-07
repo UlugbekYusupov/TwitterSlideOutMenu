@@ -32,9 +32,29 @@ class HomeController: UITableViewController, UIGestureRecognizerDelegate {
     fileprivate func setupNavigationItems() {
         
         navigationItem.title = "Home"
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(handleOpen))
+        setupCircularNavigationBar()
+//        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(handleOpen))
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Hide", style: .plain, target: self, action: #selector(handleHide))
+    }
+    
+    fileprivate func setupCircularNavigationBar(){
+        
+        let image = #imageLiteral(resourceName: "me").withRenderingMode(.alwaysOriginal)
+        let customView = UIButton(type: .system)
+        customView.addTarget(self, action: #selector(handleOpen), for: .touchUpInside)
+        customView.setImage(image, for: .normal)
+        customView.imageView?.contentMode = .scaleAspectFit
+        customView.layer.cornerRadius = 20
+        customView.clipsToBounds = true
+//        customView.frame = CGRect(x: 0, y: 0, width: 40, height: 40)
+        
+        customView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        customView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+        
+        let barButtonItem = UIBarButtonItem(customView: customView)
+        navigationItem.leftBarButtonItem = barButtonItem
     }
     
     //MARK:- Setup TableView override methods
